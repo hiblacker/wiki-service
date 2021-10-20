@@ -1,0 +1,30 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Node.js
+      uses: actions/setup-node@v2.4.1
+      with:
+        node-version: '14.x'
+    - name: Install npm dependencies
+      run: npm install
+    - name: Run build task
+      run: npm run build
+    - name: Deploy to Server
+      uses: easingthemes/ssh-deploy@main
+      env:
+          SSH_PRIVATE_KEY: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3s+XXXVyw79VTCVujTiSQq/EpoElBVLSR5XRZXkcHPVg/ZzBWv0toroB3jHHwBV+r819F6PTXkgv9fkN2qhG4cckOTHQpKgHq3Egh0ie7hjBKHXxBzFVDZaiOjBLhvtWc0T5X+BMm0D+6rg9BwdJhabi3JyTx9V5+seuY7yb8f/8ryGYHaWTEcO5Uz3Rcm4kCJaUntp9tv3pabag0V7PtpKME9fQol75ILb4SAi5k898GsAQDG6xWDavUBrqspQ6Vj8EMN7YhAJC1Nf0GKirTLQnexEqqtU2sCm7FPH3OcLF0ClexiPC2r3cSpyH2RbAfuV+sK8JOhqb/0zbkcwLBFhYeO2IE4hOKIsNY17uc3JZN4+zq0saCJIRGriTJ7NEKu1oq8fHWfBcC5hcaWkb/GSfjAR2Hxc74iQm3sBNfCg2rmvtbaVSnAcYzCni6RUahZKgEj1XpS2LTJocJnqaOonOpbWiK+c33bfXiRQpkOVvsnhR7/BDlLtxazlKTNELykGMuSjj/Zt83XTve5XpEH+dlUl3INi5eLMRnCBBvn+zb/Idt7eD5AEGbLmOsbFdNqysI036c+1M2/eTg/dqO3XOJjHbjbt3Fq9aGiAS4plHLf3NF4EHXFp7bNCqXWG0irLjDcZGsrUzLr8E92zA8i3OrE6kCLh2OOQtRjtvXDw== 25556621@qq.com
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: 118.89.219.85
+          REMOTE_PORT: 13022
+          REMOTE_USER: ubuntu
+          TARGET: "/root/www/wiki-service"
+          EXCLUDE: "/dist/, /node_modules/"
