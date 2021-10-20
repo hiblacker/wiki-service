@@ -14,7 +14,7 @@ jobs:
             host: ${{ secrets.SERVICE_HOST }}
             port: ${{ secrets.REMOTE_PORT }}
             username: ${{ secrets.REMOTE_USER }}
-            key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+            key: ${{ secrets.SERVER_SSH_KEY }}
             debug: true
             script: |
               cd ${{ secrets.REMOTE_DIR }}
