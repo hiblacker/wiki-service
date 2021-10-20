@@ -33,7 +33,7 @@ jobs:
           host: ${{ secrets.SERVICE_HOST }}
           port: ${{ secrets.SERVICE_PORT }}
           username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           script: |
             cd ${{ secrets.REMOTE_DIR }}
             git pull
