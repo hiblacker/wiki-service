@@ -15,11 +15,9 @@ jobs:
             port: ${{ secrets.REMOTE_PORT }}
             username: ${{ secrets.REMOTE_USER }}
             key: ${{ secrets.SERVER_SSH_KEY }}
-            debug: true
             script: |
               cd ${{ secrets.REMOTE_DIR }}
               git pull
               npm i
               npm run build
-              npm run start:prod
-
+              pm2 start npm --name wiki-service -- start:prod
