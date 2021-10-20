@@ -36,5 +36,5 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd ${{ secrets.REMOTE_DIR }}
-            yarn
-            yarn start:prod
+            npm i
+            npm run start:prod
