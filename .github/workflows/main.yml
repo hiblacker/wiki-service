@@ -20,5 +20,6 @@ jobs:
               cd ${{ secrets.REMOTE_DIR }}
               git pull
               npm i
+              npm run build
               npm run start:prod
 
