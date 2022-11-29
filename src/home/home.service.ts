@@ -19,8 +19,8 @@ export class HomeService {
             .pipe(map((r) => r.data))
             .subscribe({
                 next(data) {
-                    console.log(data)
                     res.json(data)
+                    console.log(`掘进文章返回${data.data?.length}条数据`)
                 },
             })
         // console.log(res)
